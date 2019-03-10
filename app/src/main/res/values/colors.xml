@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#181f27</color>
+    <color name="colorPrimaryDark">#181f27</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorRed">#e40505</color>
+    <color name="colorJoystickViewDisableBgGrey">#ABACAD</color>
+    <color name="colorJoystickViewDisableBorderGrey">#D4D4D6</color>
+    <color name="colorJoystickViewDisableBtnGrey">#99999B</color>
+
+    <color name="colorJoystickViewEnableBgColor">#8298b6</color>
+    <color name="colorJoystickViewEnableBorderColor">#151516</color>
+    <color name="colorJoystickViewEnableBtnColor">#1c1c2d</color>
+
+    <color name="colorConnectedGreen">#00aa00</color>
+    <color name="colorDisconnectedRed">#aa0000</color>
 </resources>

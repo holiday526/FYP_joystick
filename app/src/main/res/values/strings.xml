@@ -1,9 +1,57 @@
 <resources>
-    <string name="app_name">Joystick Commander</string>
+    <string name="app_name">Joystick controller</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+
+    <!-- for content main -->
+    <string name="content_main_angle">Angle: </string>
+    <string name="content_main_strength">Strength: </string>
+    <string name="content_main_connection_status_tag">Connection status:</string>
+    <string name="content_main_connection_status_tag_connecting">Connection status: connecting...</string>
+    <string name="content_main_connection_status_tag_not_connected">Connection status: not connected</string>
+    <string name="content_main_connection_status_tag_connected">Connection status: connected to </string>
+    <string name="content_main_connection_status_null">null</string>
+    <string name="content_main_no_device_is_connected">No device is connected</string>
+    <string name="content_main_joystick_enabled">Joysticks are enabled</string>
+    <string name="content_main_joystick_disabled">Joysticks are disabled</string>
+    <string name="content_main_joystick_connection_lost">Connection Lost</string>
+
+    <!-- for snackbar -->
+    <string name="snackbar_message">Testing for the snackbar</string>
+
+    <!-- for nav -->
+    <string name="nav_option_setting">Setting</string>
+    <string name="nav_option_bluetooth">BT connection</string>
+
+    <string name="nav_subtitle_communication">Communication</string>
+
+    <string name="nav_option_share">Share</string>
+    <string name="nav_option_send">Send</string>
+
+    <!-- for nav top -->
+    <string name="nav_header_title">Combat Robot</string>
+    <string name="nav_header_subtitle">Joystick controller</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <!-- for dialog fragment -->
+    <string name="dialog_fragment_cancel">Cancel</string>
+    <string name="dialog_fragment_ok">OK</string>
+    <string name="dialog_fragment_title">Bluetooth Client List</string>
+    <string name="dialog_fragment_no_bt_client">There is no paired device</string>
+    <string name="dialog_fragment_connection_failed">Connection failed</string>
+    <string name="dialog_fragment_connection_connecting">Connecting...</string>
+
+    <!-- for alert dialog -->
+    <string name="alert_dialog_bt_no_bt_module_title">Device not compatible</string>
+    <string name="alert_dialog_bt_no_bt_module_msg">Device doesn\'t support Bluetooth</string>
+
+    <string name="alert_dialog_error_null_device_title">Error</string>
+    <string name="alert_dialog_error_null_device_msg">Please connect to the bluetooth module first.</string>
+
+    <string name="alert_dialog_ok_btn">OK</string>
+    <string name="alert_dialog_exit_btn">EXIT</string>
+
+    <!-- for not identified textview -->
+    <string name="not_identified_textview">testing</string>
 </resources>
