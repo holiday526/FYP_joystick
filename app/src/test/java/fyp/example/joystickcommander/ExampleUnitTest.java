@@ -1,4 +1,4 @@
-package fyp.joystickcommander;
+package fyp.example.joystickcommander;
 
 import org.junit.Test;
 

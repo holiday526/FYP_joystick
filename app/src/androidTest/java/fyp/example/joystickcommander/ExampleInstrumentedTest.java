@@ -1,4 +1,4 @@
-package fyp.joystickcommander;
+package fyp.example.joystickcommander;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("fyp.joystickcommander", appContext.getPackageName());
+        assertEquals("fyp.example.joystickcommander", appContext.getPackageName());
     }
 }

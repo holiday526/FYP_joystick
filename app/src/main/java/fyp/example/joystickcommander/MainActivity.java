@@ -1,4 +1,4 @@
-package fyp.joystickcommander;
+package fyp.example.joystickcommander;
 
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
@@ -16,6 +16,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,6 +36,8 @@ import io.github.controlwear.virtual.joystick.android.JoystickView;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String TAG = "MainActivity";
+
     // JoystickView widget
     static JoystickView leftJoystickView;
     static JoystickView rightJoystickView;
@@ -44,7 +47,7 @@ public class MainActivity extends AppCompatActivity
     TextView tv_one, tv_two, tv_three, tv_four;
     Handler handler_btIn;
 
-    final int handlerState = 0;
+    final int HANDLER_STATE = 0;
     private BluetoothAdapter btAdapter = null;
     private BluetoothSocket btSocket = null;
     private StringBuilder dataReceiveString = new StringBuilder();
@@ -94,6 +97,21 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onMove(int angle, int strength) {
                 // TODO: set the left joystick onMove Listener
+                tv_three.setText(String.format("Angle: %03d",angle));
+                tv_four.setText(String.format("Strength: %03d", strength));
+                StringBuilder tempAngleAndStrength = new StringBuilder();
+                tempAngleAndStrength.append(String.format("%03d", angle))
+                                    .append(String.format("%03d", strength));
+                ByteArrayOutputStream output = new ByteArrayOutputStream(8);
+                output.write(STX);
+                try {
+                    output.write(tempAngleAndStrength.toString().getBytes());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                output.write(ETX);
+
+                mConnectedThread.write(output.toByteArray());
             }
         }, 17);
 
@@ -106,7 +124,7 @@ public class MainActivity extends AppCompatActivity
 
         handler_btIn = new Handler() {
             public void handleMessage(Message msg) {
-                if (msg.what == handlerState) {
+                if (msg.what == HANDLER_STATE) {
                     String readMessage = (String) msg.obj;
                     dataReceiveString.append(readMessage);
                     tv_one.setText("Data Received = " + dataReceiveString.toString());
@@ -241,7 +259,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.bt_connection) {
-            // Handle the camera action
+            // Handle the bt_connection
         } /*else if (id == R.id.nav_gallery) {
 
         }*/
@@ -304,9 +322,10 @@ public class MainActivity extends AppCompatActivity
             while (true) {
                 try {
                     bytes = mmInStream.read(buffer);  // read bytes from input buffer
-                    String readMessage = new String(buffer, 0 , bytes);
+                    String readMessage = new String(buffer, 0, bytes);
+                    Log.d(TAG, "run: listening Message" + readMessage);
                     // Send the bytes back to the handler
-                    handler_btIn.obtainMessage(handlerState, bytes, -1, readMessage).sendToTarget();
+                    handler_btIn.obtainMessage(HANDLER_STATE, bytes, 0, readMessage).sendToTarget();
                 } catch (IOException e) {
                     // ???? really need to break?
                     break;
